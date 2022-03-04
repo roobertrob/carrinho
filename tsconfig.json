@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/Body/index.tsx", "store/store.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/Body/index.tsx", "store/store.js", "stores/useIsOpen.js", "components/Header/index.tsx"],
   "exclude": ["node_modules"]
 }
