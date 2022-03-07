@@ -1,10 +1,6 @@
-import Cart from "../Cart";
-import useIsOpen from '../../stores/useIsOpen'
 import useCountItems from '../../stores/useCountItems'
 
 export function Header() {
-
-    const isOpen = useIsOpen(state => state.isOpen);
 
     const countItems = useCountItems(state => state.countItems)
 

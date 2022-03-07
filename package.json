@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "immer": "^9.0.12",
     "json-server": "^0.17.0",
     "miragejs": "^0.1.43",
     "next": "12.1.0",

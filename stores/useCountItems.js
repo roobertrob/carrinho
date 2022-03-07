@@ -7,7 +7,7 @@ export const useCountItems = create(persist(
     setCountItems: () => set({ countItems: get().countItems + 1 })
   }),
   {
-    name: "cart-storage", // name of item in the storage (must be unique)
+    name: "cart-count", // name of item in the storage (must be unique)
     
   }
 ))
