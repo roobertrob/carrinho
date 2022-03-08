@@ -5,21 +5,17 @@ import { persist } from "zustand/middleware"
 export const useCart = create(persist(
 
     set => {
-        const setState = fn =>set(produce(fn));
+        const setState = (fn) => {set(produce(fn))};
         return {
             state: {
                 products: [],
             },
 
             actions: {
-                toggle: () =>
-                    setState(({ state }) => {
-                        state.open = !state.open
-                    }),
-
                 add: (product) => setState(({ state }) => {
                     if (!state.products.includes(product)) {
                         state.products.push(product)
+                        console.log(product)
                     }
                 }),
                 remove: () => setState(({ state }) => {
@@ -33,6 +29,8 @@ export const useCart = create(persist(
     },
     {
         name: "cart-storage", // name of item in the storage (must be unique)
+        serialize: (state) => JSON.stringify(state.state),
+        deserialize: (state) => JSON.parse(state.state)
 
     }
 ))

@@ -1,4 +1,5 @@
 import { Header } from '../../components/Header'
+import { ProductCart } from '../../components/ProductCart'
 import {useCart} from '../../stores/useCart'
 
 interface ProductProps {
@@ -10,20 +11,18 @@ interface ProductProps {
 
 export default function Cart(){
 
-    const { products } = useCart(store => store.state)
+    const {products}  = useCart(store => store.state)
+    
     
     return(
         <>
         <Header/>
+        {console.log(products)}; 
+        {console.log (typeof products)};
+        
 
         {products.map((product:ProductProps)=>{
-            <table>
-                <tr>
-                    <td>{product.img}</td>
-                    <td>{product.nome}</td>
-                    <td>{product.valor}</td>
-                </tr>
-            </table>
+            <ProductCart id={product.id} nome={product.nome} valor={product.valor} img={product.img}/>
         })}
         
         </>

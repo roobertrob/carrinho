@@ -15,7 +15,7 @@ interface ProductProps {
 export default function Body() {
 
     const countItems = useCountItems(state => state.setCountItems)
-    const { add } = useCart(store => store.actions)
+   
 
     const [products, setProducts] = useState<ProductProps>([]);
     async function getProducts() {
@@ -29,14 +29,12 @@ export default function Body() {
         getProducts()
     }, [])
 
-
-
     return (
         <>
             <div className={"flex flex-wrap place-content-center w-screen h-full bg-[#988B8E] text-white"}>
                 {products.map((product: ProductProps) => {
                     return (
-                        <Product id={product.id} nome={product.nome} img={product.img} valor={product.valor} />
+                        <Product id={product.id} nome={product.nome} img={product.img} valor={product.valor} key={product.id}/>                      
                     )
                 })}
             </div>
