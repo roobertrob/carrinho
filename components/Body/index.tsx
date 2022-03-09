@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import useCountItems from '../../stores/useCountItems'
-import { useCart } from '../../stores/useCart'
 import { Product } from "../Product";
 
 interface ProductProps {
@@ -14,10 +12,9 @@ interface ProductProps {
 
 export default function Body() {
 
-    const countItems = useCountItems(state => state.setCountItems)
-   
 
-    const [products, setProducts] = useState<ProductProps>([]);
+    const [products, setProducts] = useState([] as unknown as ProductProps);
+
     async function getProducts() {
         const URL = 'http://localhost:3001/api/todosProdutos'
         const response = await fetch(URL);
@@ -38,6 +35,8 @@ export default function Body() {
                     )
                 })}
             </div>
+
+            
         </>
     )
 

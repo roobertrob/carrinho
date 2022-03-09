@@ -1,5 +1,4 @@
-import useCartStore from '../../stores/useCart'
-
+import useStore from '../../stores/useStore'
 interface ProductProps {
     id: number;
     nome: string;
@@ -8,14 +7,7 @@ interface ProductProps {
 }
 
 export function Product(Product: ProductProps) {
-    const { add } = useCartStore(({ products }) => ({
-        add: products.products
-    }))
-
-    function handleAddProduct(Product: ProductProps) {
-        add(Product)
-        return Product;
-    }
+    const { products, setProducts } = useStore();
 
     return (
         <div className={`flex flex-col justify-around items-center h-auto w-auto m-10 border-2 bg-[#2D4654] rounded-lg`} key={Math.random()} >
@@ -25,7 +17,8 @@ export function Product(Product: ProductProps) {
                 style: 'currency',
                 currency: 'BRL',
             }).format(Product.valor)}</div>
-            <button className={`border-2 p-2 m-5 rounded-lg`} onClick={() => handleAddProduct(Product)}>Adicionar ao carrrinho</button>
+            {console.log(products)}
+            <button className={`border-2 p-2 m-5 rounded-lg`} onClick={() => setProducts(Product)}>Adicionar ao carrrinho</button>
         </div>
     )
 }

@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/Body/index.tsx", "store/store.js", "stores/useIsOpen.js", "components/Header/index.tsx", "stores/useCart.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/Body/index.tsx", "store/store.js", "stores/useIsOpen.js", "components/Header/index.tsx", "stores/useCart.ts", "stores/useStore.ts", "pages/Cart.tsx"],
   "exclude": ["node_modules"]
 }
