@@ -1,6 +1,6 @@
 import { Header } from '../../components/Header'
-import { ProductCart } from '../../components/ProductCart'
-import {useCart} from '../../stores/useCart'
+import  ProductCart  from '../../components/ProductCart'
+import useCartStore from '../../stores/useCart'
 
 interface ProductProps {
     id: number;
@@ -11,7 +11,7 @@ interface ProductProps {
 
 export default function Cart(){
 
-    const {products}  = useCart(store => store.state)
+    const {products}  = useCartStore(store => store)
     
     
     return(
@@ -21,7 +21,7 @@ export default function Cart(){
         {console.log (typeof products)};
         
 
-        {products.map((product:ProductProps)=>{
+        {products.map((product:ProductProps)=>{ //A propriedade 'map' não existe no tipo 'ProductProps'.
             <ProductCart id={product.id} nome={product.nome} valor={product.valor} img={product.img}/>
         })}
         

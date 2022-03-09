@@ -8,7 +8,7 @@ export function Header() {
 
     function redirect() {   
         router.push('/Cart')
-        return;
+        
     }
 
     return (
