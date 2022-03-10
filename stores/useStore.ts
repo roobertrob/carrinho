@@ -1,38 +1,49 @@
-import create, {GetState} from "zustand";
-import { NamedSet } from "zustand/middleware";
+import { WritableDraft } from "immer/dist/internal";
+import create, { GetState } from "zustand";
+import { persist } from "zustand/middleware";
 
 export type Product = {
-    id: number;
-    nome: string;
-    img: string;
-    valor: number;
-  };
+  id: number;
+  nome: string;
+  img: string;
+  valor: number;
+};
+
+export type StateDraft = (
+    partial: Store | ((draft: WritableDraft<Store>) => void),
+    replace?: boolean,
+    name?: string
+  ) => void;
   
-  export type Store = {
-    products: Product[];
-    setProducts: (product: Product) => void;
-  };
+export type Store = {
+  products: Product[];
+  setProducts: (product: Product) => void;
+  removeProduct:(product: Product) => void;
+};
 
+const useStore = create(persist<Store>((set: StateDraft) => ({
+  products: [],
+  setProducts: (product) => {
+    set((state) =>
+      !state.products.includes(product)
+        ? { products: [...state.products, product] }
+        : [...state.products]
+    );
+  },
+  removeProduct: (product) => {
+      set((state) =>{
+        const index = state.products.indexOf(product)
+         index > -1 ? {products: [...state.products, state.products.splice(index,1)]} : [...state.products]
+      })
+  },
+}),
+{
+    name: "cart-storage1", // name of item in the storage (must be unique)
+    getStorage: () => localStorage,
+    serialize: (state) => JSON.stringify(state.state),
+    deserialize: (state) => JSON.parse(state)
 
-const useStore = create((set: NamedSet<Store>) => ({
-    products: []as Array<Product>,
-    setProducts: (product:Product) => 
-        set((state: any)=>({
-        products: [
-            ...state.products,
-            {
-                id: product.id,
-                nome: product.nome,
-                img: product.img,
-                valor: product.valor,
-            },
-            
-        ]
-    })),
-    // removeProduct: id =>
-    // set(state => ({
-    //   product: state.products.filter(product => product.id !== id)
-    // })),
-}))
-export default useStore
+}
+));
 
+export default useStore;

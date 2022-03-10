@@ -1,39 +1,33 @@
-import { GetState, State, StoreApi, StateCreator } from "zustand";
+export const useCart = create(persist(
 
-import { NamedSet } from "zustand/middleware";
+  set => {
+      const setState = (fn) => {set(produce(fn))};
+      return {
+          state: {
+              products: [],
+          },
 
-import produce, { Draft } from "immer";
+          actions: {
+              add: (product) => setState(({ state }) => {
+                  if (!state.products.includes(product)) {
+                      state.products.push(product)
+                      console.log(product)
+                  }
+              }),
+              remove: () => setState(({ state }) => {
+                  const index = state.products.indexOf(product);
+                  if (index > -1) {
+                      state.products.splice(index, 1)
+                  }
+              }),
+          }
+      }
+  },
+  {
+      name: "cart-storage", // name of item in the storage (must be unique)
+      serialize: (state) => JSON.stringify(state.state),
+      deserialize: (state) => JSON.parse(state.state)
 
-const immer =
-  <
-    T extends State,
-    CustomSetState extends NamedSet<T>,
-    CustomGetState extends GetState<T>,
-    CustomStoreApi extends StoreApi<T>
-  >(
-    config: StateCreator<
-      T,
-      (
-        partial: ((draft: Draft<T>) => void) | T,
-        replace?: boolean,
-        name?: string
-      ) => void,
-      CustomGetState,
-      CustomStoreApi
-    >
-  ): StateCreator<T, CustomSetState, CustomGetState, CustomStoreApi> =>
-  (set, get, api) =>
-    config(
-      (partial, replace, name) => {
-        const nextState =
-          typeof partial === "function"
-            ? produce(partial as (state: Draft<T>) => T)
-            : partial;
-
-        return set(nextState, replace, name);
-      },
-      get,
-      api
-    );
-
-export default immer;
+  }
+))
+export default useCart;
