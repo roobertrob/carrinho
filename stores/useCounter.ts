@@ -1,21 +1,42 @@
 import { WritableDraft } from "immer/dist/internal";
-import create, { GetState } from "zustand";
+import create, { GetState, SetState } from "zustand";
 import { persist } from "zustand/middleware";
 
-const useCounter = create((set: any, get: any) => ({
-  counter: 1 as number,
-  incrementCounter: (counter: number) =>
-    set((state: any) => {
-      const counter = state.counter;
-      state.counter = counter >= 1 ? counter + 1 : counter + 0;
-      console.log(counter)
-    }),
-    decrementCounter: (counter: number) =>
-    set((state: any) => {
-      const counter = state.counter;
-      state.counter = counter > 1 ? counter - 1 : counter + 0;
-      console.log(counter)
-    }),
-}));
+type CounterStore = {
+  counter: { [x: string]: number };
+  incrementCounter: (productId: number) => void;
+  decrementCounter: (productId: number) => void;
+};
+
+const useCounter = create<CounterStore>(
+  (set: SetState<CounterStore>, get: GetState<CounterStore>) => ({
+    counter: {},
+    incrementCounter: (productId: number) =>
+      set((state) => {
+        const { counter } = state;
+        const amount = counter[productId] || 1;
+
+        return {
+          counter: {
+            ...counter,
+            [productId]: amount >= 1 ? amount + 1 : amount + 0,
+          },
+        };
+      }),
+
+    decrementCounter: (productId: number) =>
+      set((state) => {
+        const { counter } = state;
+        const amount = counter[productId] || 1;
+
+        return {
+          counter: {
+            ...counter,
+            [productId]: amount > 1 ? amount - 1 : amount + 0,
+          },
+        };
+      }),
+  })
+);
 
 export default useCounter;

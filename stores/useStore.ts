@@ -7,9 +7,7 @@ export type Product = {
   nome: string;
   img: string;
   valor: number;
-  removeProduct?: (
-    product: Product,
-  ) => void;
+  removeProduct?: (product: Product) => void;
 };
 
 export type StateDraft = (
@@ -21,9 +19,7 @@ export type StateDraft = (
 export type Store = {
   products: Product[];
   setProducts: (product: Product) => void;
-  removeProduct: (
-    product: Product,
-  ) => void;
+  removeProduct: (product: Product) => void;
 };
 
 const useStore = create(
@@ -31,11 +27,17 @@ const useStore = create(
     (set: StateDraft, get: any) => ({
       products: [],
       setProducts: (product) => {
-        set((state) =>
-          !state.products.includes(product)
-            ? { products: [...state.products, product] }
-            : [...state.products]
-        );
+        set((state) => {
+          const products = [...state.products];
+
+          if (!products.find((item) => product.id === item.id)) {
+            products.push(product);
+          }
+
+          return {
+            products,
+          };
+        });
       },
       removeProduct: (product) => {
         set((state) => {

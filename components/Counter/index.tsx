@@ -1,29 +1,23 @@
 import useCounter from "../../stores/useCounter";
 
+type CounterProps = {
+  productId: number;
+};
 
-export default function Counter(props: number) {
+export default function Counter({ productId }: CounterProps) {
+  const { counter, incrementCounter, decrementCounter } = useCounter();
 
-    const { counter, incrementCounter, decrementCounter } = useCounter();
-   
-   
-    return (
-        <span className="flex flex-col items-center">
-                <li>
-                    {counter}
-                </li>
-                <span className="flex flex-row">
-                    <li>
-                        <button className=" mr-3" onClick={()=>decrementCounter(props)}>
-                            -
-                        </button>
-                    </li>
-                    <li>
-                        <button onClick={()=>incrementCounter(props)}>
-                            +
-                        </button>
-                    </li>
-                </span>
-            </span>
-      
-    )
+  return (
+    <ul className="flex flex-row items-center">
+      <li className="p-3">{counter[productId] || 1}</li>
+      <li className="flex flex-row">
+        <button className=" mr-3" onClick={() => decrementCounter(productId)}>
+          -
+        </button>
+      </li>
+      <li>
+        <button onClick={() => incrementCounter(productId)}>+</button>
+      </li>
+    </ul>
+  );
 }
