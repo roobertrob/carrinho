@@ -3,42 +3,46 @@ import { useState } from "react";
 import { Product } from "../Product";
 
 interface ProductProps {
-    [x: string]: any;
-    id: number;
-    nome: string;
-    valor: number;
-    img: string;
+  [x: string]: any;
+  id: number;
+  nome: string;
+  valor: number;
+  img: string;
 }
 
 export default function Body() {
+  const [products, setProducts] = useState([] as unknown as ProductProps);
 
+  async function getProducts() {
+    const URL = "http://localhost:3000/api/todosProdutos";
+    const response = await fetch(URL);
+    const json = await response.json();
+    setProducts(json);
+  }
 
-    const [products, setProducts] = useState([] as unknown as ProductProps);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
-    async function getProducts() {
-        const URL = 'http://localhost:3000/api/todosProdutos'
-        const response = await fetch(URL);
-        const json = await response.json();
-        setProducts(json);
-    }
-
-    useEffect(() => {
-        getProducts()
-    }, [])
-
-    return (
-        <>
-            <div className={"flex flex-wrap place-content-center w-screen h-5/6 bg-[#988B8E] text-white"}>
-                {products.map((product: ProductProps) => {
-                    return (
-                        <Product id={product.id} nome={product.nome} img={product.img} valor={product.valor} key={product.id}/>                      
-                    )
-                })}
-            </div>
-
-            
-        </>
-    )
-
-
+  return (
+    <>
+      <div
+        className={
+          "flex flex-wrap place-content-center w-screen h-5/6 bg-[#988B8E] text-white"
+        }
+      >
+        {products.map((product: ProductProps) => {
+          return (
+            <Product
+              id={product.id}
+              nome={product.nome}
+              img={product.img}
+              valor={product.valor}
+              key={product.id}
+            />
+          );
+        })}
+      </div>
+    </>
+  );
 }

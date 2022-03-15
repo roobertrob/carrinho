@@ -4,17 +4,17 @@ import { persist } from "zustand/middleware";
 
 const useCounter = create((set: any, get: any) => ({
   counter: 1 as number,
-  incrementCounter: (counter: number) =>
+  incrementCounter: () =>
     set((state: any) => {
       const counter = state.counter;
       state.counter = counter >= 1 ? counter + 1 : counter + 0;
-      console.log(counter)
+      console.log(counter);
     }),
-    decrementCounter: (counter: number) =>
+  decrementCounter: () =>
     set((state: any) => {
       const counter = state.counter;
       state.counter = counter > 1 ? counter - 1 : counter + 0;
-      console.log(counter)
+      console.log(counter);
     }),
 }));
 
