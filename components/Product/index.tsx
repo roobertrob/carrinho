@@ -1,5 +1,4 @@
 import useStore from '../../stores/useStore'
-
 interface ProductProps {
     id: number;
     nome: string;
@@ -18,6 +17,7 @@ export function Product(Product: ProductProps) {
                 style: 'currency',
                 currency: 'BRL',
             }).format(Product.valor)}</div>
+
             <button className={`border-2 p-2 m-5 rounded-lg`} onClick={() => setProducts(Product)}>Adicionar ao carrrinho</button>
         </div>
     )

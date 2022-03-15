@@ -1,4 +1,6 @@
 import useStore, { Product } from "../../stores/useStore";
+import Counter from "../Counter";
+
 
 interface ProductProps {
     Product: Product;  
@@ -10,8 +12,12 @@ export default function ProductCart({Product}: ProductProps) {
     
 
     return (
-        <div className="m-3 p-1 hover:opacity-80">
-            <ul className="w-full bg-[#2D4654] border rounded-lg flex justify-center items-center " >                 
+        <div className="m-3 p-1 hover: opacity-80">
+            <ul className="w-full bg-[#2D4654] border rounded-lg flex justify-center items-center " >     
+                <li>
+                <Counter />   
+             
+                </li>            
 
                 <li className="flex justify-center">
                     <img src={Product.img} className="rounded-full m-2 w-1/3" />

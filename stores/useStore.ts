@@ -49,8 +49,8 @@ const useStore = create(
     {
       name: "cart-storage1", // name of item in the storage (must be unique)
       getStorage: () => localStorage,
-      serialize: (state) => JSON.stringify(state.state),
-      deserialize: (state) => JSON.parse(state),
+      // serialize: (state) => JSON.stringify(state.state),
+      // deserialize: (state) => JSON.parse(state),
     }
   )
 );
