@@ -16,7 +16,7 @@ export default function Body() {
     const [products, setProducts] = useState([] as unknown as ProductProps);
 
     async function getProducts() {
-        const URL = 'http://localhost:3001/api/todosProdutos'
+        const URL = 'http://localhost:3000/api/todosProdutos'
         const response = await fetch(URL);
         const json = await response.json();
         setProducts(json);
@@ -28,7 +28,7 @@ export default function Body() {
 
     return (
         <>
-            <div className={"flex flex-wrap place-content-center w-screen h-full bg-[#988B8E] text-white"}>
+            <div className={"flex flex-wrap place-content-center w-screen h-5/6 bg-[#988B8E] text-white"}>
                 {products.map((product: ProductProps) => {
                     return (
                         <Product id={product.id} nome={product.nome} img={product.img} valor={product.valor} key={product.id}/>                      

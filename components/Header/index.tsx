@@ -9,12 +9,17 @@ export function Header() {
         router.push('/Cart')
 
     }
+    function home(){
+        router.push('/')
+    }
 
     return (
         <>
-            <div className={"flex content-center justify-between w-screen h-20 bg-[#2D4654] text-white"}>
-                <div className={"font-extrabold text-3xl m-6 mt-4 "}>
+            <div className={"flex content-center justify-between w-screen h-[10vh] bg-[#2D4654] text-white"}>
+                <div>
+                    <button className={"font-extrabold text-3xl m-6 mt-4 "} onClick={home}>
                     Company
+                    </button>
                 </div>
 
                 <div className={"bg-white w-full h-px m-auto"} />
