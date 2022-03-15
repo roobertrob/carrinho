@@ -13,7 +13,7 @@ export type Product = {
 export type StateDraft = (
   partial: Store | ((draft: WritableDraft<Store>) => void),
   replace?: boolean,
-  name?: string,
+  name?: string
 ) => void;
 
 export type Store = {
@@ -27,11 +27,17 @@ const useStore = create(
     (set: StateDraft, get: any) => ({
       products: [],
       setProducts: (product) => {
-        set((state) =>
-          !state.products.includes(product)
-            ? { products: [...state.products, product] }
-            : [...state.products],
-        );
+        set((state) => {
+          const products = [...state.products];
+
+          if (!products.find((item) => product.id === item.id)) {
+            products.push(product);
+          }
+
+          return {
+            products,
+          };
+        });
       },
       removeProduct: (product) => {
         set((state) => {
@@ -47,8 +53,8 @@ const useStore = create(
       getStorage: () => localStorage,
       // serialize: (state) => JSON.stringify(state.state),
       // deserialize: (state) => JSON.parse(state),
-    },
-  ),
+    }
+  )
 );
 
 export default useStore;
