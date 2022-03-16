@@ -1,23 +1,12 @@
 import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-type Product = {
-  id: number;
-  nome: string;
-  img: string;
-  valor: number;
-};
-
-type Store = {
-  products: Product[];
-  setProducts: (product: Product) => void;
-  removeProduct: (product: Product) => void;
-};
+import { Store } from '../types/Store';
 
 const useStore = create(
   persist<Store>(
     (set: SetState<Store>, get: GetState<Store>) => ({
       products: [],
+
       setProducts: (product) => {
         set((state) => {
           const products = [...state.products];

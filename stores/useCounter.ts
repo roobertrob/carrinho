@@ -1,11 +1,6 @@
 import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-type CounterStore = {
-  counter: { [x: string]: number };
-  incrementCounter: (productId: number) => void;
-  decrementCounter: (productId: number) => void;
-};
+import { CounterStore } from '../types/CounterStore';
 
 const useCounter = create(
   persist<CounterStore>(

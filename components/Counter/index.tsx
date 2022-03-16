@@ -1,8 +1,5 @@
-import useCounter from "../../stores/useCounter";
-
-type CounterProps = {
-  productId: number;
-};
+import useCounter from '../../stores/useCounter';
+import { CounterProps } from '../../types/Counter';
 
 export default function Counter({ productId }: CounterProps) {
   const { counter, incrementCounter, decrementCounter } = useCounter();

@@ -1,15 +1,13 @@
-import useStore, { Product } from '../../stores/useStore';
+import Format from '../../functions/Format';
+import useStore from '../../stores/useStore';
+import { ProductProps } from '../../types/ProductCart';
 import Counter from '../Counter';
-
-interface ProductProps {
-  Product: Product;
-}
 
 export default function ProductCart({ Product }: ProductProps) {
   const { removeProduct } = useStore();
 
   return (
-    <div className="m-3 p-1 hover: opacity-80">
+    <div className="m-3 p-1 hover:opacity-80">
       <ul className="w-full bg-[#2D4654] border rounded-lg flex justify-center items-center ">
         <li>
           <Counter productId={Product.id} />
@@ -20,16 +18,13 @@ export default function ProductCart({ Product }: ProductProps) {
         </li>
         <li className="text-center">{Product.nome}</li>
         <li className=" w-1/3 text-center">
-          {new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-          }).format(Product.valor)}
+          {Format(Product.valor)}
         </li>
         <button
           onClick={() => removeProduct(Product)}
-          className={`flex items-center`}
+          className={`flex items-center m-4`}
         >
-          <img src="/trash.svg" alt="trash" className="w-6 m-1" />
+          <img src="/trash.svg" alt="trash" className="w-6" />
           Excluir
         </button>
       </ul>

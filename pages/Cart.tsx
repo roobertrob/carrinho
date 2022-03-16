@@ -1,4 +1,3 @@
-import Counter from '../components/Counter';
 import { Header } from '../components/Header';
 import ProductCart from '../components/ProductCart';
 import useStore from '../stores/useStore';
