@@ -1,4 +1,3 @@
-import { WritableDraft } from 'immer/dist/internal';
 import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
 

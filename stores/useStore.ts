@@ -1,22 +1,14 @@
-import { WritableDraft } from 'immer/dist/internal';
-import create, { GetState } from 'zustand';
+import create, { GetState, SetState } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type Product = {
+type Product = {
   id: number;
   nome: string;
   img: string;
   valor: number;
-  removeProduct?: (product: Product) => void;
 };
 
-export type StateDraft = (
-  partial: Store | ((draft: WritableDraft<Store>) => void),
-  replace?: boolean,
-  name?: string,
-) => void;
-
-export type Store = {
+type Store = {
   products: Product[];
   setProducts: (product: Product) => void;
   removeProduct: (product: Product) => void;
@@ -24,7 +16,7 @@ export type Store = {
 
 const useStore = create(
   persist<Store>(
-    (set: StateDraft, get: any) => ({
+    (set: SetState<Store>, get: GetState<Store>) => ({
       products: [],
       setProducts: (product) => {
         set((state) => {
@@ -49,7 +41,7 @@ const useStore = create(
       },
     }),
     {
-      name: 'cart-storage1', // name of item in the storage (must be unique)
+      name: 'cart-storage', // name of item in the storage (must be unique)
       getStorage: () => localStorage,
     },
   ),
