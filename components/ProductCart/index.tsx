@@ -1,5 +1,5 @@
-import useStore, { Product } from "../../stores/useStore";
-import Counter from "../Counter";
+import useStore, { Product } from '../../stores/useStore';
+import Counter from '../Counter';
 
 interface ProductProps {
   Product: Product;
@@ -20,9 +20,9 @@ export default function ProductCart({ Product }: ProductProps) {
         </li>
         <li className="text-center">{Product.nome}</li>
         <li className=" w-1/3 text-center">
-          {new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL",
+          {new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
           }).format(Product.valor)}
         </li>
         <button

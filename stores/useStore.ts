@@ -1,6 +1,6 @@
-import { WritableDraft } from "immer/dist/internal";
-import create, { GetState } from "zustand";
-import { persist } from "zustand/middleware";
+import { WritableDraft } from 'immer/dist/internal';
+import create, { GetState } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export type Product = {
   id: number;
@@ -13,7 +13,7 @@ export type Product = {
 export type StateDraft = (
   partial: Store | ((draft: WritableDraft<Store>) => void),
   replace?: boolean,
-  name?: string
+  name?: string,
 ) => void;
 
 export type Store = {
@@ -49,12 +49,10 @@ const useStore = create(
       },
     }),
     {
-      name: "cart-storage1", // name of item in the storage (must be unique)
+      name: 'cart-storage1', // name of item in the storage (must be unique)
       getStorage: () => localStorage,
-      // serialize: (state) => JSON.stringify(state.state),
-      // deserialize: (state) => JSON.parse(state),
-    }
-  )
+    },
+  ),
 );
 
 export default useStore;
