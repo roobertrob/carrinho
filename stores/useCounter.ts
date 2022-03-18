@@ -31,6 +31,7 @@ const useCounter = create(
             },
           };
         }),
+      
     }),
     {
       name: 'counter-cart-storage', // name of item in the storage (must be unique)

@@ -1,5 +1,6 @@
 import { Header } from '../components/Header';
 import ProductCart from '../components/ProductCart';
+import SumCart from '../components/SumCart';
 import useStore from '../stores/useStore';
 
 export default function Cart() {
@@ -17,6 +18,7 @@ export default function Cart() {
             {products.map((product) => {
               return <ProductCart Product={product} key={product.img} />;
             })}
+            <SumCart/>
           </div>
         </div>
       </main>

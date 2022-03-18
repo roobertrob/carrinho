@@ -6,13 +6,27 @@ const useStore = create(
   persist<Store>(
     (set: SetState<Store>, get: GetState<Store>) => ({
       products: [],
-
+      // sum: 0,
+      // setSum: () => {
+      //   set((state) => {
+      //     const products = [...state.products];
+      //     const sum = state.sum;
+      //     for (let i = 0; i < products.length; i++) {
+      //       state.sum = sum + products[i].amount * products[i].valor;
+      //     }
+      //     return {
+      //       products,
+      //       sum,
+      //     };
+      //   });
+      // },
       setProducts: (product) => {
         set((state) => {
           const products = [...state.products];
 
           if (!products.find((item) => product.id === item.id)) {
             products.push(product);
+          //  get().setSum();
           }
 
           return {
@@ -23,11 +37,44 @@ const useStore = create(
       removeProduct: (product) => {
         set((state) => {
           const index = state.products.indexOf(product);
-          index > -1
-            ? { products: [...state.products, state.products.splice(index, 1)] }
-            : [...state.products];
+          if (index > -1) {
+            {
+              products: [...state.products, state.products.splice(index, 1)];
+            }
+            // get().setSum();
+          }
         });
       },
+      incrementAmount: (product) =>
+        set((state) => {
+          const products = [...state.products];
+          const index = products.indexOf(product);
+          const filteredProduct = products[index];
+
+          if (index > -1) {
+            filteredProduct.amount += 1;
+            // get().setSum();
+          }
+
+          products[index] = filteredProduct;
+
+          return products;
+        }),
+      decrementAmount: (product) =>
+        set((state) => {
+          const products = [...state.products];
+          const index = products.indexOf(product);
+          const filteredProduct = products[index];
+
+          if (index > -1 && filteredProduct.amount > 1) {
+            filteredProduct.amount -= 1;
+            // get().setSum();
+          }
+
+          products[index] = filteredProduct;
+
+          return products;
+        }),
     }),
     {
       name: 'cart-storage', // name of item in the storage (must be unique)

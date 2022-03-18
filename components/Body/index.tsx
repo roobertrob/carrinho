@@ -32,6 +32,7 @@ export default function Body() {
               nome={product.nome}
               img={product.img}
               valor={product.valor}
+              amount={1}
               key={product.id}
             />
           );

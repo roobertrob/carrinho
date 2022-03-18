@@ -1,3 +1,5 @@
+import { Product } from "../Product";
+
 export type CounterProps = {
-  productId: number;
+  product: Product;
 };

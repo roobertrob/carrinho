@@ -10,7 +10,7 @@ export default function ProductCart({ Product }: ProductProps) {
     <div className="m-3 p-1 hover:opacity-80">
       <ul className="w-full bg-[#2D4654] border rounded-lg flex justify-center items-center ">
         <li>
-          <Counter productId={Product.id} />
+          <Counter product={Product} />
         </li>
 
         <li className="flex justify-center">
