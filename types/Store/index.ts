@@ -1,4 +1,4 @@
-import { Product } from '../Product';
+import { Product } from "../Product";
 
 export type Store = {
   products: Product[];
@@ -8,4 +8,5 @@ export type Store = {
   decrementAmount: (productId: Product) => void;
   setProducts: (product: Product) => void;
   removeProduct: (product: Product) => void;
+  getTotalAmount: () => number;
 };
