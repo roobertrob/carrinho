@@ -1,6 +1,6 @@
-import Format from "../../functions/Format";
-import useStore from "../../stores/useStore";
-import { Product } from "../../types/Product";
+import Format from "functions/Format";
+import useStore from "stores/useStore";
+import { Product } from "types/Product";
 import {
   buttonClasses,
   divProductClasses,

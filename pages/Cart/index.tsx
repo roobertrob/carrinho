@@ -1,7 +1,7 @@
-import { Header } from "../../components/Header";
-import ProductCart from "../../components/ProductCart";
-import SumCart from "../../components/SumCart";
-import useStore from "../../stores/useStore";
+import { Header } from "components/Header";
+import ProductCart from "components/ProductCart";
+import SumCart from "components/SumCart";
+import useStore from "stores/useStore";
 import { divClasses, mainContainerClasses, secDivClasses, thirDivClasses } from "./styles";
 
 export default function Cart() {
@@ -9,6 +9,7 @@ export default function Cart() {
 
   return (
     <>
+      
       <Header />
       <main className={mainContainerClasses}>
         <div className={divClasses}>

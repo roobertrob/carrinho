@@ -1,7 +1,8 @@
+import { Product } from "components/Product";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Product as ProductType } from "../../types/Product";
-import { Product } from "../Product";
+import { Product as ProductType } from "types/Product";
+
 import { divClasses } from "./styles";
 
 export default function Body() {
@@ -20,6 +21,7 @@ export default function Body() {
 
   return (
     <>
+      
       <div className={divClasses}>
         {products.map((product: ProductType) => {
           return (

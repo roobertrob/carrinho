@@ -1,5 +1,5 @@
-import Format from "../../functions/Format";
-import useStore from "../../stores/useStore";
+import Format from "functions/Format";
+import useStore from "stores/useStore";
 import { buttonClasses, divClasses } from "./styles";
 
 export default function SumCart() {

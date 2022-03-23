@@ -1,5 +1,5 @@
-import useStore from '../../stores/useStore';
-import { CounterProps } from '../../types/Counter';
+import useStore from 'stores/useStore';
+import { CounterProps } from 'types/Counter';
 import { liAmountClasses, liButtonClasses, ulClasses } from './styles';
 
 export default function Counter({ product }: CounterProps) {

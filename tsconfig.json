@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "baseUrl": ".",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,7 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/components/Body/index.tsx", "store/store.js", "stores/useIsOpen.js", "components/Header/index.tsx", "stores/useCart.ts", "stores/useStore.ts", "pages/Cart/index.tsx"],
   "exclude": ["node_modules"]

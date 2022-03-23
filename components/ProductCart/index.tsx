@@ -1,7 +1,7 @@
-import Format from "../../functions/Format";
-import useStore from "../../stores/useStore";
-import { ProductProps } from "../../types/ProductCart";
-import Counter from "../Counter";
+import Format from "functions/Format";
+import useStore from "stores/useStore";
+import { ProductProps } from "types/ProductCart";
+import Counter from "components/Counter";
 import {
   buttonClasses,
   divClasses,
