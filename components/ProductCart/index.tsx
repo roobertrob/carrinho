@@ -1,30 +1,37 @@
-import Format from '../../functions/Format';
-import useStore from '../../stores/useStore';
-import { ProductProps } from '../../types/ProductCart';
-import Counter from '../Counter';
+import Format from "../../functions/Format";
+import useStore from "../../stores/useStore";
+import { ProductProps } from "../../types/ProductCart";
+import Counter from "../Counter";
+import {
+  buttonClasses,
+  divClasses,
+  imgClasses,
+  liImgClasses,
+  svgClasses,
+  ulClasses,
+  valueClasses,
+} from "./styles";
 
 export default function ProductCart({ Product }: ProductProps) {
   const { removeProduct } = useStore();
 
   return (
-    <div className="m-3 p-1 hover:opacity-80">
-      <ul className="w-full bg-[#2D4654] border rounded-lg flex justify-center items-center ">
+    <div className={divClasses}>
+      <ul className={ulClasses}>
         <li>
           <Counter product={Product} />
         </li>
 
-        <li className="flex justify-center">
-          <img src={Product.img} className="rounded-full m-2 w-1/3" />
+        <li className={liImgClasses}>
+          <img src={Product.img} className={imgClasses} />
         </li>
-        <li className="text-center">{Product.nome}</li>
-        <li className=" w-1/3 text-center">
-          {Format(Product.valor)}
-        </li>
+        <li>{Product.nome}</li>
+        <li className={valueClasses}>{Format(Product.valor)}</li>
         <button
           onClick={() => removeProduct(Product)}
-          className={`flex items-center m-4`}
+          className={buttonClasses}
         >
-          <img src="/trash.svg" alt="trash" className="w-6" />
+          <img src="/trash.svg" alt="trash" className={svgClasses} />
           Excluir
         </button>
       </ul>

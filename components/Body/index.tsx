@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Product as ProductType } from '../../types/Product';
-import { Product }  from "../Product";
-
+import { Product as ProductType } from "../../types/Product";
+import { Product } from "../Product";
+import { divClasses } from "./styles";
 
 export default function Body() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -20,11 +20,7 @@ export default function Body() {
 
   return (
     <>
-      <div
-        className={
-          'flex flex-wrap place-content-center w-screen h-5/6 bg-[#988B8E] text-white'
-        }
-      >
+      <div className={divClasses}>
         {products.map((product: ProductType) => {
           return (
             <Product

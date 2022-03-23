@@ -1,5 +1,6 @@
 import useStore from '../../stores/useStore';
 import { CounterProps } from '../../types/Counter';
+import { liAmountClasses, liButtonClasses, ulClasses } from './styles';
 
 export default function Counter({ product }: CounterProps) {
 
@@ -10,10 +11,10 @@ export default function Counter({ product }: CounterProps) {
   const amount = filteredProduct?.amount;
 
   return (
-    <ul className="flex flex-row items-center">
-      <li className="p-3">{amount}</li>
-      <li className="flex flex-row">
-        <button className=" mr-3" onClick={() => decrementAmount(product)}>
+    <ul className={ulClasses}>
+      <li className={liAmountClasses}>{amount}</li>
+      <li className={liButtonClasses}>
+        <button onClick={() => decrementAmount(product)}>
           -
         </button>
       </li>
