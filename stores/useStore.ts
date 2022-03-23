@@ -1,6 +1,6 @@
-import create, { GetState, SetState } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { Store } from '../types/Store';
+import create, { GetState, SetState } from "zustand";
+import { persist } from "zustand/middleware";
+import { Store } from "../types/Store";
 
 const useStore = create(
   persist<Store>(
@@ -26,7 +26,7 @@ const useStore = create(
 
           if (!products.find((item) => product.id === item.id)) {
             products.push(product);
-          //  get().setSum();
+            //  get().setSum();
           }
 
           return {
@@ -49,38 +49,39 @@ const useStore = create(
         set((state) => {
           const products = [...state.products];
           const index = products.indexOf(product);
-          const filteredProduct = products[index];
+          const item = {
+            ...product,
+            amount: product.amount + 1,
+          };
 
-          if (index > -1) {
-            filteredProduct.amount += 1;
-            // get().setSum();
-          }
+          products[index] = item;
 
-          products[index] = filteredProduct;
-
-          return products;
+          return { products };
         }),
       decrementAmount: (product) =>
         set((state) => {
           const products = [...state.products];
           const index = products.indexOf(product);
-          const filteredProduct = products[index];
+          const item = {
+            ...product,
+          };
 
-          if (index > -1 && filteredProduct.amount > 1) {
-            filteredProduct.amount -= 1;
-            // get().setSum();
+          if (item.amount > 1) {
+            item.amount -= 1;
           }
 
-          products[index] = filteredProduct;
+          products[index] = item;
 
-          return products;
+          return { products };
         }),
+      getTotalAmount: () =>
+        get().products.reduce((acc, curr) => acc + curr.amount * curr.valor, 0),
     }),
     {
-      name: 'cart-storage', // name of item in the storage (must be unique)
+      name: "cart-storage", // name of item in the storage (must be unique)
       getStorage: () => localStorage,
-    },
-  ),
+    }
+  )
 );
 
 export default useStore;
