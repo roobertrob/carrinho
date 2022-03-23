@@ -1,11 +1,15 @@
 const mainContainerClasses = [
+  "select-none",
   "flex",
-  " flex-col",
+  "flex-col",
+  "md:flex-row",
+  
+
   "items-center",
   " h-auto",
   "min-h-[90vh]",
   " w-screen",
-  "bg-[#988B8E]",
+  "bg-[#181b23]",
   "text-white",
 ].join(" ");
 
