@@ -7,7 +7,7 @@ const divProductClasses = [
   "w-auto",
   "m-10",
   "border-2",
-  "bg-[#2D4654]",
+  "bg-[#4f4f5278]",
   "rounded-lg",
   "hover:scale-105",
   "delay-150",

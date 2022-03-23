@@ -1,6 +1,6 @@
 import useStore from 'stores/useStore';
 import { CounterProps } from 'types/Counter';
-import { liAmountClasses, liButtonClasses, ulClasses } from './styles';
+import { divClasses, liAmountClasses, liButtonClasses, ulClasses } from './styles';
 
 export default function Counter({ product }: CounterProps) {
 
@@ -11,16 +11,16 @@ export default function Counter({ product }: CounterProps) {
   const amount = filteredProduct?.amount;
 
   return (
-    <ul className={ulClasses}>
-      <li className={liAmountClasses}>{amount}</li>
-      <li className={liButtonClasses}>
-        <button onClick={() => decrementAmount(product)}>
-          -
-        </button>
-      </li>
-      <li>
-        <button onClick={() => incrementAmount(product)}>+</button>
-      </li>
-    </ul>
+    <div className={divClasses}>
+      <ul className={ulClasses}>
+        <li className={""}>
+          <button onClick={() => decrementAmount(product)}>-</button>
+        </li>
+        <li className="m-4">{amount}</li>
+        <li>
+          <button onClick={() => incrementAmount(product)}>+</button>
+        </li>
+      </ul>
+    </div>
   );
 }

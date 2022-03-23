@@ -2,9 +2,8 @@ const divClasses = [
   "flex",
   "content-center",
   "justify-between",
-  "w-screen",
   "h-[10vh]",
-  "bg-[#2D4654] ",
+  "bg-[#4f4f52]",
   "text-white",
 ].join(" ");
 

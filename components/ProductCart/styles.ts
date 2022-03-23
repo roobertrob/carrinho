@@ -2,7 +2,7 @@ const divClasses = ["m-3 ", "p-1", "hover:opacity-80", "text-center"].join(" ");
 
 const ulClasses = [
   "w-full",
-  "bg-[#2D4654]",
+  "bg-[#4f4f5278]",
   "border",
   "rounded-lg",
   "flex",

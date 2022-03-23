@@ -26,13 +26,20 @@ export default function ProductCart({ Product }: ProductProps) {
           <img src={Product.img} className={imgClasses} />
         </li>
         <li>{Product.nome}</li>
-        <li className={valueClasses}>{Format(Product.valor)}</li>
+        <div className={valueClasses}>
+          <li>Valor unitário</li>
+          <li>{Format(Product.valor)}</li>
+        </div>
+        <div className={valueClasses}>
+          <li>Total</li>
+          <li>{Format(Product.valor*Product.amount)}</li>
+        </div>
         <button
           onClick={() => removeProduct(Product)}
           className={buttonClasses}
         >
-          <img src="/trash.svg" alt="trash" className={svgClasses} />
-          Excluir
+          <img src="/trash.svg" alt="Exluir produto" className={svgClasses} />
+          
         </button>
       </ul>
     </div>

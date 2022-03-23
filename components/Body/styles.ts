@@ -4,7 +4,7 @@ const divClasses = [
   "place-content-center",
   "w-screen",
   "h-5/6",
-  "bg-[#988B8E]",
+  "bg-[#181b23]",
   "text-white",
 ].join(" ");
 export { divClasses };

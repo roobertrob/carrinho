@@ -1,18 +1,21 @@
 const divClasses = [
   "flex",
-  "flex-row",
+  "flex-col",
   "justify-around",
   "items-center",
-  "h-[100px]",
-  "w-[400px]",
+  "h-[300px]",
+  "w-[300px]",
   "m-10",
-  " border-2",
-  "bg-[#2D4654]",
+  "border-2",
+  "bg-[#4f4f5278]",
   "rounded-lg",
   "hover:scale-105",
   "delay-150",
-  " shadow-lg",
+  "shadow-lg",
+  "min-w-[234px]"
 ].join(" ");
+const titleClasses = ["text-2xl"].join(" ");
+const priceClasses = ["text-3xl"].join(" ");
 const buttonClasses = [
   "border",
   "p-3",
@@ -21,4 +24,5 @@ const buttonClasses = [
   "hover:text-gray-900",
   "font-bold",
 ].join(" ");
-export { divClasses, buttonClasses };
+
+export { divClasses, buttonClasses, titleClasses, priceClasses };
