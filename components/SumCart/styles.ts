@@ -6,6 +6,7 @@ const divClasses = [
   "h-[300px]",
   "w-[300px]",
   "m-10",
+  "my-20",
   "border-2",
   "bg-[#4f4f5278]",
   "rounded-lg",

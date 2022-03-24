@@ -3,12 +3,10 @@ const mainContainerClasses = [
   "flex",
   "flex-col",
   "md:flex-row",
-  
-
-  "items-center",
-  " h-auto",
+  "items-start",
+  "h-auto",
   "min-h-[90vh]",
-  " w-screen",
+  "w-screen",
   "bg-[#181b23]",
   "text-white",
 ].join(" ");
