@@ -13,7 +13,7 @@ const divClasses = [
   "hover:scale-105",
   "delay-150",
   "shadow-lg",
-  "min-w-[234px]"
+  "min-w-[234px]",
 ].join(" ");
 const titleClasses = ["text-2xl"].join(" ");
 const priceClasses = ["text-3xl"].join(" ");

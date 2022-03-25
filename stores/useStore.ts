@@ -59,8 +59,9 @@ const useStore = create(
 
           return { products };
         }),
-      getTotalAmount: () =>
-        get().products.reduce((acc, curr) => acc + curr.amount * curr.valor, 0),
+      getTotalAmount: () => {
+       return get().products.reduce((acc, curr) => acc + curr.amount * curr.valor, 0)
+      },
     }),
     {
       name: "cart-storage",

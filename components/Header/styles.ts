@@ -4,6 +4,7 @@ const divClasses = [
   "justify-between",
   "h-[10vh]",
   "bg-[#4f4f52]",
+  
   "text-white",
 ].join(" ");
 
