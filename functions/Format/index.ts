@@ -6,3 +6,4 @@ export default function Format(Valor: Product["valor"]) {
     currency: 'BRL',
   }).format(Valor));
 }
+     
