@@ -1,13 +1,11 @@
-import  Body  from "../components/Body";
-import Cart from "../components/Cart";
-import {Header} from "../components/Header";
+import Body from '../components/Body';
+import { Header } from '../components/Header';
 
-export default function Home(){
-  return(
-    <div className={``}> 
-      <Header/>
-      <Body/>
-      <Cart/>
-    </div>
-  )
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <Body />
+    </>
+  );
 }
